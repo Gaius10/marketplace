@@ -39,3 +39,5 @@ Route::get('/model', function() {
 
     // O Mass Update funciona analogamente
 });
+
+Route::get('/admin/stores', 'App\Http\Controllers\Admin\StoreController@index');
