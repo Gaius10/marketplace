@@ -23,6 +23,8 @@ class StoreController extends Controller
 
     public function store(Request $request)
     {
-        dd($request->all());
+        $data = $request->all();
+        $user = \App\Models\User::find($data['user']);
+        return  $user->store()->create($data);  
     }
 }
