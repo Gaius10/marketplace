@@ -41,3 +41,5 @@ Route::get('/model', function() {
 });
 
 Route::get('/admin/stores', 'App\Http\Controllers\Admin\StoreController@index');
+Route::get('/admin/stores/create', 'App\Http\Controllers\Admin\StoreController@create');
+Route::post('/admin/stores/store', 'App\Http\Controllers\Admin\StoreController@store');
