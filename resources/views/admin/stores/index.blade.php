@@ -48,7 +48,8 @@
                                         <div class="text-sm text-gray-900">{{ $store->description }}</div>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                        <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                                        <a href="{{route('admin.stores.edit', ['store' => $store->id])}}" class="text-indigo-600 hover:text-indigo-900 px-3">Edit</a>
+                                        <a href="{{route('admin.stores.destroy', ['store' => $store->id])}}" class="text-red-600 hover:text-red-900 px-3">Remove</a>
                                     </td>
                                 </tr>
                             @endforeach

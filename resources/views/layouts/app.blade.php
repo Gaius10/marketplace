@@ -10,6 +10,7 @@
 </head>
 <body>
     <main class="sm:px-8">
+        @include('flash::message')
         @yield('content')
     </main>
 </body>
