@@ -14,5 +14,11 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         \App\Models\User::factory(10)->has(\App\Models\Store::factory())->create();
+        
+        $stores = \App\Models\Store::all();
+
+        foreach ($stores as $store) {
+            \App\Models\Product::factory()->count(5)->for($store)->create();
+        }
     }
 }
