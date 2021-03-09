@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 Route::get('/model', function() {
     // $products = \App\Models\Product::all(); // select * from products
@@ -40,7 +40,15 @@ Route::get('/model', function() {
     // O Mass Update funciona analogamente
 });
 
-Route::prefix('admin')->name('admin.')->namespace('App\Http\Controllers\Admin')->group(function() {
-    Route::resource('stores', 'StoreController');
-    Route::resource('products', 'ProductController');
+Route::group(['middleware' => ['auth']], function() {
+
+    Route::prefix('admin')->name('admin.')->namespace('App\Http\Controllers\Admin')->group(function() {
+        Route::resource('stores', 'StoreController');
+        Route::resource('products', 'ProductController');
+    });
+
 });
+
+Auth::routes(); 
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

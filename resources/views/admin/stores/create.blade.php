@@ -45,16 +45,6 @@
                                     <input id="slug" name="slug" autocomplete="slug" type="text"
                                         class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                 </div>
-
-                                <div class="col-span-12 md:col-span-3">
-                                    <label for="user" class="block text-sm font-medium text-gray-700">Usuário</label>
-                                    <select id="user" name="user" autocomplete="user" type="text"
-                                        class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                        @foreach ($users as $user)
-                                            <option value="{{ $user->id }}">{{ $user->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
                             </div>
                         </div>
                         <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
