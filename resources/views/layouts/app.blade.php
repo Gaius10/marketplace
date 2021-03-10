@@ -28,6 +28,8 @@
                                     class="@if (request()->is('admin/stores*')) bg-gray-900 text-white @else text-gray-300 hover:bg-gray-700 hover:text-white @endif px-3 py-2 rounded-md text-sm font-medium">Lojas</a>
                                 <a href="{{route('admin.products.index')}}"
                                     class="@if (request()->is('admin/products*')) bg-gray-900 text-white @else text-gray-300 hover:bg-gray-700 hover:text-white @endif px-3 py-2 rounded-md text-sm font-medium">Produtos</a>
+                                <a href="{{route('admin.categories.index')}}"
+                                    class="@if (request()->is('admin/categories*')) bg-gray-900 text-white @else text-gray-300 hover:bg-gray-700 hover:text-white @endif px-3 py-2 rounded-md text-sm font-medium">Categorias</a>
                             </div>
                         </div>
                     @endauth

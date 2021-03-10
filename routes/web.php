@@ -45,6 +45,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::prefix('admin')->name('admin.')->namespace('App\Http\Controllers\Admin')->group(function() {
         Route::resource('stores', 'StoreController');
         Route::resource('products', 'ProductController');
+        Route::resource('categories', 'CategoryController');
     });
 
 });
