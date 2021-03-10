@@ -19,26 +19,46 @@
                             <div class="grid grid-cols-6 gap-6">
                                 <div class="col-span-12 md:col-span-6">
                                     <label for="name" class="block text-sm font-medium text-gray-700">Nome da loja</label>
-                                    <input type="text" name="name" id="name" autocomplete="given-name"
-                                        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    <input type="text" name="name" id="name" autocomplete="given-name" value="{{old('name')}}"
+                                        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm @error('name') border-red-300 @else border-gray-300 @enderror rounded-md">
+                                        @error('name')
+                                            <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
+                                                {{$message}}
+                                            </span>
+                                        @enderror
                                 </div>
 
                                 <div class="col-span-12 md:col-span-6">
                                     <label for="description" class="block text-sm font-medium text-gray-700">Descrição da loja</label>
-                                    <textarea id="description" name="description" rows="3" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border-gray-300 rounded-md"></textarea>
+                                    <textarea id="description" name="description" rows="3" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm @error('description') border-red-300 @else border-gray-300 @enderror rounded-md">{{old('description')}}</textarea>
+                                    @error('description')
+                                        <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
+                                            {{$message}}
+                                        </span>
+                                    @enderror
                                 </div>
 
                                 <div class="col-span-12 md:col-span-3">
                                     <label for="phone" class="block text-sm font-medium text-gray-700">Telefone</label>
-                                    <input id="phone" name="phone" autocomplete="phone" type="text"
-                                        class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                    <input id="phone" name="phone" autocomplete="phone" type="text" value="{{old('phone')}}"
+                                        class="mt-1 block w-full py-2 px-3 border @error('phone') border-red-300 @else border-gray-300 @enderror bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                    @error('phone')
+                                        <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
+                                            {{$message}}
+                                        </span>
+                                    @enderror
                                 </div>
 
                                 <div class="col-span-12 md:col-span-3">
                                     <label for="mobile_phone" class="block text-sm font-medium text-gray-700">Celular</label>
-                                    <input id="mobile_phone" name="mobile_phone" autocomplete="mobile_phone" type="text"
-                                        class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                </div>
+                                    <input id="mobile_phone" name="mobile_phone" autocomplete="mobile_phone" type="text" value="{{old('mobile_phone')}}"
+                                        class="mt-1 block w-full py-2 px-3 border @error('mobile_phone') border-red-300 @else border-gray-300 @enderror bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                    @error('mobile_phone')
+                                        <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
+                                            {{$message}}
+                                        </span>
+                                    @enderror
+                                    </div>
 
                                 <div class="col-span-12 md:col-span-3">
                                     <label for="slug" class="block text-sm font-medium text-gray-700">Slug</label>

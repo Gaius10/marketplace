@@ -25,9 +25,9 @@
                             <div class="flex space-x-4">
                                 <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                                 <a href="{{route('admin.stores.index')}}"
-                                    class="@if (request()->is('admin/stores')) bg-gray-900 text-white @else text-gray-300 hover:bg-gray-700 hover:text-white @endif px-3 py-2 rounded-md text-sm font-medium">Lojas</a>
+                                    class="@if (request()->is('admin/stores*')) bg-gray-900 text-white @else text-gray-300 hover:bg-gray-700 hover:text-white @endif px-3 py-2 rounded-md text-sm font-medium">Lojas</a>
                                 <a href="{{route('admin.products.index')}}"
-                                    class="@if (request()->is('admin/products')) bg-gray-900 text-white @else text-gray-300 hover:bg-gray-700 hover:text-white @endif px-3 py-2 rounded-md text-sm font-medium">Produtos</a>
+                                    class="@if (request()->is('admin/products*')) bg-gray-900 text-white @else text-gray-300 hover:bg-gray-700 hover:text-white @endif px-3 py-2 rounded-md text-sm font-medium">Produtos</a>
                             </div>
                         </div>
                     @endauth

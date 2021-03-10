@@ -27,58 +27,47 @@
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200">
-                            @foreach ($stores as $store)
-                                <tr>
-                                    <td class="px-6 py-4">
-                                        {{ $store->id }}
-                                    </td>
-                                    <td class="py-4 whitespace-nowrap">
-                                        <div class="flex items-center">
-                                            <div class="ml-4">
-                                                <div class="text-sm font-medium text-gray-900">
-                                                    {{ $store->name }}
-                                                </div>
-                                                <div class="text-sm text-gray-500">
-                                                    {{ $store->mobile_phone }}
-                                                </div>
+                            <tr>
+                                <td class="px-6 py-4">
+                                    {{ $store->id }}
+                                </td>
+                                <td class="py-4 whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <div class="ml-4">
+                                            <div class="text-sm font-medium text-gray-900">
+                                                {{ $store->name }}
+                                            </div>
+                                            <div class="text-sm text-gray-500">
+                                                {{ $store->mobile_phone }}
                                             </div>
                                         </div>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="text-sm text-gray-900">{{ $store->description }}</div>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium flex flex-row">
-                                        <a href="{{route('admin.stores.edit', ['store' => $store->id])}}" class="text-indigo-600 hover:text-indigo-900 px-3 py-2">Edit</a>
-                                        <form action="{{route('admin.stores.destroy', ['store' => $store->id])}}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="text-red-600 hover:text-red-900 px-3 py-2">Remove</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            @endforeach
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="flex items-end">
-                                            <div class="ml-4">
-                                                <div class="text-sm">
-                                                    {{ $stores->onEachSide(2)->links() }}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm text-gray-900">{{ $store->description }}</div>
+                                    <div class="text-sm text-gray-500">
+                                        {{ $store->products->count() }} produtos registrados
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium flex flex-row">
+                                    <a href="{{route('admin.stores.edit', ['store' => $store->id])}}" class="text-indigo-600 hover:text-indigo-900 px-3 py-2">Edit</a>
+                                    <form action="{{route('admin.stores.destroy', ['store' => $store->id])}}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="text-red-600 hover:text-red-900 px-3 py-2">Remove</button>
+                                    </form>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
 
-                <div class="flex justify-center w-max mx-auto p-5 border-gray-200">
-                    <a href="{{route('admin.stores.create')}}"
-                        class="border-2 border-transparent bg-blue-500 ml-3 py-2 px-4 font-bold uppercase text-white rounded transition-all hover:border-blue-500 hover:bg-transparent hover:text-blue-500">Nova Loja</a>
-                </div>
+                @empty($store)
+                    <div class="flex justify-center w-max mx-auto p-5 border-gray-200">
+                        <a href="{{route('admin.stores.create')}}"
+                            class="border-2 border-transparent bg-blue-500 ml-3 py-2 px-4 font-bold uppercase text-white rounded transition-all hover:border-blue-500 hover:bg-transparent hover:text-blue-500">Nova Loja</a>
+                    </div>
+                @endempty
             </div>
         </div>
     </div>
