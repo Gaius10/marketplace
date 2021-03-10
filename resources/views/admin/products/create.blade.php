@@ -60,6 +60,22 @@
                                 </div>
 
                                 <div class="col-span-12 md:col-span-3">
+                                    <label for="categories" class="block text-sm font-medium text-gray-700">Categorias</label>
+                                    <select id="categories" name="categories[]" type="text" multiple
+                                        class="@error('categories') border-red-300 @else border-gray-300 @enderror mt-1 block w-full py-2 px-3 border bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                        @foreach ($categories as $category)
+                                            <option value="{{$category->id}}">{{$category->name}}</option>
+                                        @endforeach
+                                    </select>
+                                    </select>
+                                    @error('categories')
+                                        <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
+                                            {{$message}}
+                                        </span>
+                                    @enderror
+                                </div>
+
+                                <div class="col-span-12 md:col-span-3">
                                     <label for="slug" class="block text-sm font-medium text-gray-700">Slug</label>
                                     <input id="slug" name="slug" autocomplete="slug" type="text"
                                         class="mt-1 block w-full py-2 px-3 border bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">

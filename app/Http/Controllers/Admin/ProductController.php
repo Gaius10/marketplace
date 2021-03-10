@@ -35,7 +35,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin.products.create');
+        $categories = \App\Models\Category::all(['id', 'name']);
+
+        return view('admin.products.create', compact('categories'));
     }
 
     /**
@@ -50,7 +52,8 @@ class ProductController extends Controller
         $data['price'] = str_replace(',', '.', $data['price']);
 
         $store = auth()->user()->store;
-        $store->products()->create($data);
+        $product = $store->products()->create($data);
+        $product->categories()->sync($data['categories']);
 
         flash('Produto criado com sucesso.');
         return redirect()->route('admin.products.index');
@@ -75,8 +78,9 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
+        $categories = \App\Models\Category::all(['id', 'name']);
         $product = $this->product->findOrFail($id);
-        return view('admin.products.edit', compact('product'));
+        return view('admin.products.edit', compact('product', 'categories'));
     }
 
     /**
@@ -89,9 +93,11 @@ class ProductController extends Controller
     public function update(ProductRequest $request, $id)
     {
         $data = $request->all();
+        $data['price'] = str_replace(',', '.', $data['price']);
 
         $product = $this->product->find($id);
         $product->update($data);
+        $product->categories()->sync($data['categories']);
 
         flash('Produto atualizado com sucesso.');
         return redirect()->route('admin.products.index');
