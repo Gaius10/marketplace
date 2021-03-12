@@ -12,7 +12,7 @@
                 </div>
             </div>
             <div class="mt-5 md:mt-0 md:col-span-3">
-                <form action="{{route('admin.stores.store')}}" method="POST">
+                <form action="{{route('admin.stores.store')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="shadow overflow-hidden sm:rounded-md">
                         <div class="px-4 py-5 bg-white sm:p-6">
@@ -58,7 +58,13 @@
                                             {{$message}}
                                         </span>
                                     @enderror
-                                    </div>
+                                </div>
+
+                                <div class="col-span-12 md:col-span-3">
+                                    <label for="logo" class="block text-sm font-medium text-gray-700">Logo</label>
+                                    <input id="logo" name="logo" type="file" value="{{old('logo')}}"
+                                        class="border-gray-300 mt-1 block w-full py-2 px-3 border bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                </div>
 
                                 <div class="col-span-12 md:col-span-3">
                                     <label for="slug" class="block text-sm font-medium text-gray-700">Slug</label>
