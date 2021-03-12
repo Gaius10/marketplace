@@ -29,6 +29,7 @@ class ProductRequest extends FormRequest
             'body'        => 'required|min:30',
             'price'       => 'required|regex:/[0-9]*,[0-9]{2}/',
             'categories'  => 'required',
+            'photos'      => 'image'
         ];
     }
     
@@ -37,7 +38,8 @@ class ProductRequest extends FormRequest
         return [
             'required' => 'Este campo é obrigatório.',
             'min' => 'Este campo deve possuir no mínimo :min caracteres.',
-            'regex' => 'Valor inválido. (Ex.: 100,00)'
+            'regex' => 'Valor inválido. (Ex.: 100,00)',
+            'image' => 'Imagem inválida.',
         ];
     }
 }

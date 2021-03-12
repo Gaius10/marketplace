@@ -45,7 +45,12 @@
                                     <img src="{{asset('storage/' . $store->logo)}}" alt="Logo da loja">
                                     <label for="logo" class="block text-sm font-medium text-gray-700">Logo</label>
                                     <input id="logo" name="logo" type="file" value="{{old('logo')}}"
-                                        class="border-gray-300 mt-1 block w-full py-2 px-3 border bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                        class="@error('logo') border-red-300 @else border-gray-300 @enderror mt-1 block w-full py-2 px-3 border bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                    @error('logo')
+                                        <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
+                                            {{$message}}
+                                        </span>
+                                    @enderror
                                 </div>
 
                                 <div class="col-span-12 md:col-span-3">

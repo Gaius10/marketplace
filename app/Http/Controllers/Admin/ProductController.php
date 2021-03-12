@@ -6,9 +6,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use \App\Models\Product;
 use App\Http\Requests\ProductRequest;
+use App\Traits\Upload;
 
 class ProductController extends Controller
 {
+    use Upload;
+
     private $product;
 
     public function __construct(Product $product)

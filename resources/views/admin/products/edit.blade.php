@@ -92,7 +92,12 @@
                                 <div class="col-span-12 md:col-span-3">
                                     <label for="photos" class="block text-sm font-medium text-gray-700">Adicionar fotos</label>
                                     <input id="photos" name="photos[]" type="file" value="{{ old('photos') }}" multiple
-                                        class="border-gray-300 mt-1 block w-full py-2 px-3 border bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                        class="@error('photos') border-red-300 @else border-gray-300 @enderror mt-1 block w-full py-2 px-3 border bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                    @error('photos')
+                                        <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
+                                            {{$message}}
+                                        </span>
+                                    @enderror
                                 </div>
 
                                 <div class="col-span-12 md:col-span-3">
