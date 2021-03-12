@@ -23,7 +23,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = $this->product->paginate(5);
+        $userStore = auth()->user()->store;
+        $products = $userStore->products()->paginate(5);
 
         return view('admin.products.index', compact('products'));
     }
@@ -54,6 +55,11 @@ class ProductController extends Controller
         $store = auth()->user()->store;
         $product = $store->products()->create($data);
         $product->categories()->sync($data['categories']);
+
+        if ($request->hasFile('photos')) {
+            $photos = $this->imageUpload($request->file('photos'), 'image');
+            $product->photos()->createMany($photos);
+        }
 
         flash('Produto criado com sucesso.');
         return redirect()->route('admin.products.index');
@@ -99,8 +105,13 @@ class ProductController extends Controller
         $product->update($data);
         $product->categories()->sync($data['categories']);
 
+        if ($request->hasFile('photos')) {
+            $photos = $this->imageUpload($request->file('photos'), 'image');
+            $product->photos()->createMany($photos);
+        }
+
         flash('Produto atualizado com sucesso.');
-        return redirect()->route('admin.products.index');
+        return redirect()->route('admin.products.edit', ['product' => $id]);
     }
 
     /**
@@ -112,9 +123,23 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $product = $this->product->find($id);
+
+        $product->categories()->sync($product->categories);
+        dd($product->categories);
         $product->delete();
 
         flash('Produto removido com sucesso.');
         return redirect()->route('admin.products.index');
+    }
+
+    public function imageUpload($images, $columnName)
+    {
+        $uploadedImages = [];
+
+        foreach ($images as $image) {
+            $uploadedImages[] = [$columnName => $image->store('products', 'public')];
+        }
+
+        return $uploadedImages;
     }
 }
