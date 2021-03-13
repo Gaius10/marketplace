@@ -11,7 +11,7 @@
                     </p>
                 </div>
             </div>
-            <div class="mt-5 md:mt-0 md:col-span-3">
+            <div class="mt-2 mb-10 md:mt-0 md:col-span-3">
                 <form action="{{route('admin.stores.store')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="shadow overflow-hidden sm:rounded-md">
