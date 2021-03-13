@@ -17,6 +17,7 @@ class ProductController extends Controller
     public function __construct(Product $product)
     {
         $this->product = $product;
+        $this->middleware('user.has.not.store');
     }   
 
     /**
@@ -27,6 +28,7 @@ class ProductController extends Controller
     public function index()
     {
         $userStore = auth()->user()->store;
+
         $products = $userStore->products()->paginate(5);
 
         return view('admin.products.index', compact('products'));
