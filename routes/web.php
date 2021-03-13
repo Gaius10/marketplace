@@ -13,32 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home');
+Route::get('/product/{slug}', 'App\Http\Controllers\HomeController@single')->name('product.single');
 
-Route::get('/model', function() {
-    // $products = \App\Models\Product::all(); // select * from products
-
-    // $user = new \App\Models\User();
-    // $user->name = '';
-    // $user->email = '';
-    // $user->password = '';
-    // $user->save();
-
-    // return \App\Models\User::where('name', 'Jennyfer Klein PhD')->first();
-
-    // return \App\Models\User::paginate(5);
-
-    // Mass Assignment
-    // \App\Models\User::create([
-    //     'name' => 'Abacate',
-    //     'email' => 'abacate@email.com',
-    //     'password' => bcrypt('naotempassword')
-    // ]);
-
-    // O Mass Update funciona analogamente
-});
 
 Route::group(['middleware' => ['auth']], function() {
 
