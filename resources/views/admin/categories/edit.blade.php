@@ -28,12 +28,6 @@
                                     <label for="description" class="block text-sm font-medium text-gray-700">Descrição</label>
                                     <textarea id="description" name="description" rows="3" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border-gray-300 rounded-md">{{$category->description}}</textarea>
                                 </div>
-
-                                <div class="col-span-12 md:col-span-3">
-                                    <label for="slug" class="block text-sm font-medium text-gray-700">Slug</label>
-                                    <input id="slug" name="slug" autocomplete="slug" type="text" value="{{$category->slug}}" disabled
-                                        class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                </div>
                             </div>
                         </div>
                         <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
