@@ -30,6 +30,8 @@ class HomeController extends Controller
     public function single($slug)
     {
         $product = $this->product->whereSlug($slug)->first();
-        return view('singe', compact('product'));
+        $recommendations = $this->product->limit(4)->get();
+
+        return view('single', compact('product', 'recommendations'));
     }
 }

@@ -15,7 +15,7 @@
                         @endif
                         </div>
                         <div style="background-color: rgba(0,0,0,0.6)"
-                            class="absolute bottom-0 mb-2 ml-3 px-2 py-1 rounded text-sm text-white">R$ {{$product->price}}</div>
+                            class="absolute bottom-0 mb-2 ml-3 px-2 py-1 rounded text-sm text-white">R$ {{number_format($product->price, 2,',', '.')}}</div>
                     </div>
                     <div class="p-3">
                         <h3 class="mr-10 text-sm truncate-2nd">

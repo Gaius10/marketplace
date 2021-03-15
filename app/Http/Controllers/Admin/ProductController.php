@@ -55,7 +55,10 @@ class ProductController extends Controller
     public function store(ProductRequest $request)
     {
         $data = $request->all();
-        $data['price'] = str_replace(',', '.', $data['price']);
+        $data['price']       = str_replace(',', '.', $data['price']);
+        $data['body']        = str_replace(PHP_EOL, '<br>', $data['body']);
+        $data['description'] = str_replace(PHP_EOL, '<br>', $data['description']);
+        
 
         $store = auth()->user()->store;
         $product = $store->products()->create($data);
@@ -91,6 +94,10 @@ class ProductController extends Controller
     {
         $categories = \App\Models\Category::all(['id', 'name']);
         $product = $this->product->findOrFail($id);
+
+        $product->description = str_replace('<br>', PHP_EOL, $product->description);
+        $product->body = str_replace('<br>', PHP_EOL, $product->body);
+
         return view('admin.products.edit', compact('product', 'categories'));
     }
 
@@ -104,7 +111,9 @@ class ProductController extends Controller
     public function update(ProductRequest $request, $id)
     {
         $data = $request->all();
-        $data['price'] = str_replace(',', '.', $data['price']);
+        $data['price']       = str_replace(',', '.', $data['price']);
+        $data['body']        = str_replace(PHP_EOL, '<br>', $data['body']);
+        $data['description'] = str_replace(PHP_EOL, '<br>', $data['description']);
 
         $product = $this->product->find($id);
         $product->update($data);
