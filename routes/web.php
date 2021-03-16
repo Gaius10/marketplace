@@ -16,9 +16,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home');
 Route::get('/product/{slug}', 'App\Http\Controllers\HomeController@single')->name('product.single');
 
-Route::prefix('cart')->name('cart.')->group(function () {
-    Route::post('add', 'App\Http\Controllers\CartController@add')->name('add');
-    Route::get('remove/{slug}', 'App\Http\Controllers\CartController@remove')->name('remove');
+Route::prefix('cart')->name('cart.')->namespace('App\Http\Controllers')->group(function () {
+    Route::post('add', 'CartController@add')->name('add');
+    Route::get('remove/{slug}', 'CartController@remove')->name('remove');
+});
+
+Route::prefix('checkout')->name('checkout.')->namespace('App\Http\Controllers')->group(function () {
+    Route::get('/', 'CheckoutController@index')->name('index');
 });
 
 
