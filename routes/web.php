@@ -16,6 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home');
 Route::get('/product/{slug}', 'App\Http\Controllers\HomeController@single')->name('product.single');
 
+Route::prefix('cart')->name('cart.')->group(function () {
+    Route::post('add', 'App\Http\Controllers\CartController@add')->name('add');
+    Route::get('remove/{slug}', 'App\Http\Controllers\CartController@remove')->name('remove');
+});
+
 
 Route::group(['middleware' => ['auth']], function() {
 
