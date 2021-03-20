@@ -1,3 +1,7 @@
 .font-small-caps {
     font-variant: small-caps;
 }
+
+.card_input input:focus + div {
+    color: darkblue;
+}
